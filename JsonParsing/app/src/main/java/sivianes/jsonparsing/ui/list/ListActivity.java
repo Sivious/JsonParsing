@@ -4,13 +4,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.widget.Toast;
 
 import java.util.List;
 
 import sivianes.jsonparsing.R;
 import sivianes.jsonparsing.model.Animal;
-import sivianes.jsonparsing.model.JSONSchema;
 import sivianes.jsonparsing.ui.list.elements.AnimalAdapter;
 import sivianes.jsonparsing.ui.list.presenter.ListPresenter;
 import sivianes.jsonparsing.ui.list.presenter.ListPresenterImpl;
@@ -21,10 +20,6 @@ public class ListActivity extends AppCompatActivity implements ListView {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-
-    public ListActivity() {
-        this.presenter = new ListPresenterImpl();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +32,7 @@ public class ListActivity extends AppCompatActivity implements ListView {
     }
 
     private void init() {
+        this.presenter = new ListPresenterImpl(getApplicationContext());
         presenter.setView(this);
 
         recyclerView = (RecyclerView) findViewById(R.id.list_recicle_view);
@@ -54,6 +50,12 @@ public class ListActivity extends AppCompatActivity implements ListView {
                 initAdapter(JSONSchema);
             }
         }));
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
+        toast.show();
     }
 
     private void initAdapter(List<Animal> JSONSchema) {

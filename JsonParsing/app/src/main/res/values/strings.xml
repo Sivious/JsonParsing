@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Json Parsing</string>
     <string name="transition_album_cover">animal transition</string>
+    <string name="error_server">Error. Couldn\'t get information</string>
 </resources>

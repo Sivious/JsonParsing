@@ -9,4 +9,5 @@ import sivianes.jsonparsing.model.Animal;
  */
 public interface ListView {
     void showInfo(List<Animal> JSONSchema);
+    void showMessage(String message);
 }

@@ -1,8 +1,11 @@
 package sivianes.jsonparsing.ui.list.presenter;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import sivianes.jsonparsing.R;
 import sivianes.jsonparsing.logic.connection.GetInfoFromUrlInteractor;
 import sivianes.jsonparsing.logic.connection.GetInfoFromUrlInteractorImpl;
 import sivianes.jsonparsing.model.Animal;
@@ -15,6 +18,11 @@ import sivianes.jsonparsing.ui.list.ListView;
 public class ListPresenterImpl implements ListPresenter {
     GetInfoFromUrlInteractor getInfoFromUrlInteractor;
     private ListView view;
+    private Context context;
+
+    public ListPresenterImpl(Context context) {
+        this.context = context;
+    }
 
     @Override
     public void setView(ListView view) {
@@ -28,7 +36,6 @@ public class ListPresenterImpl implements ListPresenter {
         getInfoFromUrlInteractor.execute(new GetInfoFromUrlInteractor.Callback() {
             @Override
             public void OnSuccess(JSONSchema info) {
-                //TODO: Do something
                 System.out.println("Success getting info");
                 view.showInfo(joinLists(info));
             }
@@ -37,6 +44,7 @@ public class ListPresenterImpl implements ListPresenter {
             public void OnFailure() {
                 //TODO: Do something
                 System.out.println("Error getting info");
+                view.showMessage(context.getString(R.string.error_server));
             }
         });
 

@@ -70,8 +70,6 @@ public class DetailActivity extends AppCompatActivity implements DetailView{
     }
 
     private void getInfoFromExtras(Intent intent) {
-        //image.setImageBitmap((Bitmap) intent.getExtras().getParcelable(DetailView.BUNDLE_IMAGE_KEY));
-
         imagePath = intent.getStringExtra(DetailView.BUNDLE_IMAGE_KEY);
         loadImage(imagePath);
 
