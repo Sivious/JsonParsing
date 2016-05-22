@@ -13,6 +13,11 @@ Structure:
 - logic
 - model
 - ui
+- 
+### TOOLS AND LIBS
+
+I have used universal image loader to handle online images. It is really easy to use and have default cache. 
+The JSON model schema was generated with org.jsonschema2pojo. A really easy way to struct the JSON in sub models.  
 
 ### THINGS I HAD TO DISCART BECAUSE OF TIMING
 - Dagger: I am used to work with dependency injection but it's quite expensive (in time terms) to configure, so I decided to discard. 
